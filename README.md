@@ -157,3 +157,10 @@ docker compose down -v
     solar_irradiation_wm2 double,
     PRIMARY KEY (timestamp)
     );`
+4. Create virtual environment to generate the sensor data with anomalies
+    - Create virtual env
+    `virtualenv venv`
+    - Install all the necessary packages
+    `pip install -r requirements.txt`
+    - Generate the randome data
+    `python generate_data_with_anomalies.py --start "2020-01-01 00:00:00" --count 10000 --output data_with_anomalies.csv --anomaly_ratio 0.1`
