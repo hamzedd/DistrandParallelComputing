@@ -170,3 +170,10 @@ docker compose down -v
     `docker cp data_with_anomalies.csv cassandra:/data_with_anomalies.csv`
 7. Make sure that you have exited the container and run the following command to push the data from the CSV file to the cassandra keyspace and the corresponding table, that we have created on step 3.
     `docker exec -it cassandra cqlsh -k sensor_data_ks -e "COPY sensor_readings (timestamp, temperature_C, humidity_percent, solar_irradiation_wm2) FROM '/data_with_anomalies.csv' WITH HEADER = TRUE;"`
+8. Let's make sure that we have the data in the table
+    - Attach to the container
+        `docker exec -it cassandra cqlsh`
+    - Switch to the sensor_data_ks database
+        `USE sensor_data_ks;`
+    - Run the query which will display top 10 entries in the table, where you just entered the data from the from CSV file
+        `SELECT * FROM sensor_readings LIMIT 10;`
