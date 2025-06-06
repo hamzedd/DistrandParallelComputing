@@ -157,10 +157,14 @@ docker compose down -v
     solar_irradiation_wm2 double,
     PRIMARY KEY (timestamp)
     );`
-4. Create virtual environment to generate the sensor data with anomalies
+4. Please exit from the container and make sure that you are now on your PC in the power shell or other terminal, use command
+    `exit` to exit the cassandra container!
+5. Create virtual environment to generate the sensor data with anomalies
     - Create virtual env
     `virtualenv venv`
     - Install all the necessary packages
     `pip install -r requirements.txt`
     - Generate the randome data
     `python generate_data_with_anomalies.py --start "2020-01-01 00:00:00" --count 10000 --output data_with_anomalies.csv --anomaly_ratio 0.1`
+6. Copy the generated CSV file, data_with_anomalies.csv to the cassandra container, with the following command
+    `docker cp data_with_anomalies.csv cassandra:/data_with_anomalies.csv`
