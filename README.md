@@ -140,3 +140,20 @@ docker compose down -v
 3. For macOS users:
    - If you see "Docker Desktop is starting..." for a long time, try resetting Docker Desktop from the menu bar icon
    - Ensure you have sufficient disk space and memory allocated to Docker Desktop 
+
+
+## Cassandra Lab
+1. Run the following command
+    `docker exec -it cassandra cqlsh`
+2. Create the keyspace
+    `CREATE KEYSPACE IF NOT EXISTS sensor_data_ks WITH replication = {'class': 'SimpleStrategy', 'replication_factor': 1};`
+3. Switch to the keyspace and create the table
+    `USE sensor_data_ks;`
+    and
+    `CREATE TABLE IF NOT EXISTS sensor_readings (
+    timestamp timestamp,
+    temperature_C double,
+    humidity_percent double,
+    solar_irradiation_wm2 double,
+    PRIMARY KEY (timestamp)
+    );`
