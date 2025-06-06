@@ -178,6 +178,7 @@ docker compose down -v
     - Run the query which will display top 10 entries in the table, where you just entered the data from the from CSV file
         `SELECT * FROM sensor_readings LIMIT 10;`
         as a result, you should see something like this
+        ```
         timestamp                       | humidity_percent | solar_irradiation_wm2 | temperature_c
         ---------------------------------+------------------+-----------------------+---------------
         2020-04-06 11:00:00.000000+0000 |            62.64 |                375.08 |          23.1
@@ -190,3 +191,4 @@ docker compose down -v
         2020-04-03 10:15:00.000000+0000 |            64.58 |                356.62 |         23.63
         2020-02-16 00:00:00.000000+0000 |            41.19 |                474.16 |         27.49
         2020-01-13 06:15:00.000000+0000 |            74.35 |                398.17 |         22.59
+        ```
