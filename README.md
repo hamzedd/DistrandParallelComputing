@@ -192,3 +192,8 @@ docker compose down -v
         2020-02-16 00:00:00.000000+0000 |            41.19 |                474.16 |         27.49
         2020-01-13 06:15:00.000000+0000 |            74.35 |                398.17 |         22.59
         ```
+9. Install once again the necessary packages using the command
+    ```pip install -r requirements.txt```
+    You can skip this step - it's just to make sure that you have all the necessary packages!
+10. Run the plot generation script from cassandra with the following command and options
+    ```python plot_cassandra_sensor_multi.py --keyspace sensor_data_ks --table sensor_readings --output multi_plot.png```
