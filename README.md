@@ -168,3 +168,5 @@ docker compose down -v
     `python generate_data_with_anomalies.py --start "2020-01-01 00:00:00" --count 10000 --output data_with_anomalies.csv --anomaly_ratio 0.1`
 6. Copy the generated CSV file, data_with_anomalies.csv to the cassandra container, with the following command
     `docker cp data_with_anomalies.csv cassandra:/data_with_anomalies.csv`
+7. Make sure that you have exited the container and run the following command to push the data from the CSV file to the cassandra keyspace and the corresponding table, that we have created on step 3.
+    `docker exec -it cassandra cqlsh -k sensor_data_ks -e "COPY sensor_readings (timestamp, temperature_C, humidity_percent, solar_irradiation_wm2) FROM '/data_with_anomalies.csv' WITH HEADER = TRUE;"`
